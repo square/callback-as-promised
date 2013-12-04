@@ -1,0 +1,33 @@
+{
+  "name": "callback-as-promised",
+  "version": "0.0.1",
+  "description": "Don't keep promises you can't keep.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.squareup.com:javascript/callback-as-promised.git"
+  },
+  "bugs": {
+    "url": "https://github.com/square/callback-as-promised/issues"
+  },
+  "keywords": [
+    "promise",
+    "promises",
+    "deferred",
+    "future",
+    "control flow",
+    "flow control"
+  ],
+  "author": "Square, Inc.",
+  "license": "Apache 2",
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "chai-as-promised": "~4.1.0",
+    "sinon": "~1.7.3",
+    "q": "~0.9.7",
+    "mocha": "~1.14.0"
+  }
+}
