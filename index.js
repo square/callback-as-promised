@@ -13,15 +13,15 @@ var slice = Array.prototype.slice;
  *   var CourteousClient = function() {};
  *
  *   CourteousClient.prototype.doSomethingAsync = callbackAsPromised(function(successful) {
- *     var deferred = new Deferred();
- *     setTimeout(function() {
- *       if (successful) {
- *         deferred.resolve('very successful');
- *       } else {
- *         deferred.reject(new Error("wasn't successful"));
- *       }
- *     }, 500);
- *     return deferred.promise;
+ *     return new Promise(function(resolve, reject) {
+ *       setTimeout(function() {
+ *         if (successful) {
+ *           resolve('very successful');
+ *         } else {
+ *           reject(new Error("wasn't successful"));
+ *         }
+ *       }, 500);
+ *    )};
  *   });
  *
  *   var courteousClient = new CourteousClient();

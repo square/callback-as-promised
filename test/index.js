@@ -1,24 +1,22 @@
 var callbackAsPromised = require('../index'),
     chai = require('chai'),
     chaiAsPromised = require('chai-as-promised'),
-    Q = require('q'),
+    Promise = require('promise'),
     sinon = require('sinon'),
     expect = chai.expect;
 
 chai.use(chaiAsPromised);
 
 var doSomethingAsync = callbackAsPromised(function(successful) {
-  deferred = Q.defer();
-
-  setTimeout(function() {
-    if (successful) {
-      deferred.resolve('very successful');
-    } else {
-      deferred.reject(new Error("wasn't successful"));
-    }
-  }, 500);
-
-  return deferred.promise;
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (successful) {
+        resolve('very successful');
+      } else {
+        reject(new Error("wasn't successful"));
+      }
+    }, 500);
+  });
 });
 
 describe('callback-as-promised', function() {
