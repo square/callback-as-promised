@@ -1,5 +1,4 @@
-callback-as-promised
-====================
+# callback as promised
 
 Don't make promises you can't keep.
 
@@ -11,15 +10,15 @@ var callbackAsPromised = require('callback-as-promised');
 var CourteousClient = function() {};
 
 CourteousClient.prototype.doSomethingAsync = callbackAsPromised(function(successful) {
-  var deferred = new Deferred();
-  setTimeout(function() {
-    if (successful) {
-      deferred.resolve('very successful');
-    } else {
-      deferred.reject(new Error("wasn't successful"));
-    }
-  }, 500);
-  return deferred.promise;
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
+      if (successful) {
+        resolve('very successful');
+      } else {
+        reject(new Error("wasn't successful"));
+      }
+    }, 500);
+  }
 });
 
 var courteousClient = new CourteousClient();
@@ -37,3 +36,11 @@ courteousClient.doSomethingAsync(true).then(function(result) {
   // handle error
 });
 ```
+
+## Contributing
+
+Any contributors to the callback-as-promised repository must sign the [Individual Contributor License Agreement (CLA)][cla]. It's a short form that covers our bases and makes sure you're eligible to contribute.
+
+When you have a change you'd like to see in the master repository, send a pull request. Before we merge your request, we'll make sure you're in the list of people who have signed a CLA.
+
+[cla]: https://spreadsheets.google.com/spreadsheet/viewform?formkey=dDViT2xzUHAwRkI3X3k5Z0lQM091OGc6MQ&ndplr=1
